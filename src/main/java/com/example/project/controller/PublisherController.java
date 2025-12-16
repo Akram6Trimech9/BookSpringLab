@@ -23,26 +23,22 @@ public class PublisherController {
         this.publisherService = publisherService;
     }
 
-    // CREATE PUBLISHER
-    @PostMapping
+     @PostMapping
     public Publisher createPublisher(@RequestBody Publisher publisher) {
         return publisherService.createPublisher(publisher);
     }
 
-    // GET ALL PUBLISHERS
     @GetMapping
     public List<Publisher> getAllPublishers() {
         return publisherService.getAllPublishers();
     }
 
-    // GET PUBLISHER BY ID
-    @GetMapping("/{id}")
+     @GetMapping("/{id}")
     public Publisher getPublisher(@PathVariable Long id) {
         return publisherService.getPublisherById(id);
     }
 
-    // DELETE PUBLISHER
-    @DeleteMapping("/{id}")
+     @DeleteMapping("/{id}")
     public void deletePublisher(@PathVariable Long id) {
         publisherService.deletePublisher(id);
     }

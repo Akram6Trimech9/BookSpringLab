@@ -16,24 +16,20 @@ public class TagService {
         this.tagRepository = tagRepository;
     }
 
-    // CREATE
-    public Tag createTag(Tag tag) {
+     public Tag createTag(Tag tag) {
         return tagRepository.save(tag);
     }
 
-    // READ ALL
-    public List<Tag> getAllTags() {
+     public List<Tag> getAllTags() {
         return tagRepository.findAll();
     }
 
-    // READ BY ID
-    public Tag getTagById(Long id) {
+     public Tag getTagById(Long id) {
         return tagRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Tag not found"));
     }
 
-    // DELETE
-    public void deleteTag(Long id) {
+     public void deleteTag(Long id) {
         tagRepository.deleteById(id);
     }
 }

@@ -23,26 +23,22 @@ public class TagController {
         this.tagService = tagService;
     }
 
-    // CREATE TAG
-    @PostMapping
+     @PostMapping
     public Tag createTag(@RequestBody Tag tag) {
         return tagService.createTag(tag);
     }
 
-    // GET ALL TAGS
-    @GetMapping
+     @GetMapping
     public List<Tag> getAllTags() {
         return tagService.getAllTags();
     }
 
-    // GET TAG BY ID
-    @GetMapping("/{id}")
+     @GetMapping("/{id}")
     public Tag getTag(@PathVariable Long id) {
         return tagService.getTagById(id);
     }
 
-    // DELETE TAG
-    @DeleteMapping("/{id}")
+     @DeleteMapping("/{id}")
     public void deleteTag(@PathVariable Long id) {
         tagService.deleteTag(id);
     }

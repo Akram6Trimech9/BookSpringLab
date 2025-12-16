@@ -23,26 +23,21 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
-    // CREATE AUTHOR
-    @PostMapping
+     @PostMapping
     public Author createAuthor(@RequestBody Author author) {
         return authorService.createAuthor(author);
     }
 
-    // GET ALL AUTHORS
-    @GetMapping
+     @GetMapping
     public List<Author> getAllAuthors() {
         return authorService.getAllAuthors();
     }
-
-    // GET AUTHOR BY ID
-    @GetMapping("/{id}")
+     @GetMapping("/{id}")
     public Author getAuthor(@PathVariable Long id) {
         return authorService.getAuthorById(id);
     }
 
-    // DELETE AUTHOR
-    @DeleteMapping("/{id}")
+     @DeleteMapping("/{id}")
     public void deleteAuthor(@PathVariable Long id) {
         authorService.deleteAuthor(id);
     }

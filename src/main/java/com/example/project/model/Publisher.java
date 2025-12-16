@@ -24,7 +24,7 @@ public class Publisher {
     @JsonIgnore // prevents infinite recursion
     private List<Book> books;
 
-     public Long getId() { return id; }
+    public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
     public String getName() { return name; }

@@ -16,24 +16,20 @@ public class AuthorService {
         this.authorRepository = authorRepository;
     }
 
-    // CREATE
-    public Author createAuthor(Author author) {
+     public Author createAuthor(Author author) {
         return authorRepository.save(author);
     }
 
-    // READ ALL
-    public List<Author> getAllAuthors() {
+     public List<Author> getAllAuthors() {
         return authorRepository.findAll();
     }
 
-    // READ BY ID
-    public Author getAuthorById(Long id) {
+     public Author getAuthorById(Long id) {
         return authorRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Author not found"));
     }
 
-    // DELETE
-    public void deleteAuthor(Long id) {
+     public void deleteAuthor(Long id) {
         authorRepository.deleteById(id);
     }
 }

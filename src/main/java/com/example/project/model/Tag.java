@@ -26,8 +26,7 @@ public class Tag {
     @JsonIgnore
     private Set<Book> books = new HashSet<>();
 
-    // Getters and Setters
-    public Long getId() { return id; }
+     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
     public String getName() { return name; }

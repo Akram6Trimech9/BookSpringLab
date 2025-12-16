@@ -16,24 +16,20 @@ public class PublisherService {
         this.publisherRepository = publisherRepository;
     }
 
-    // CREATE
-    public Publisher createPublisher(Publisher publisher) {
+     public Publisher createPublisher(Publisher publisher) {
         return publisherRepository.save(publisher);
     }
 
-    // READ ALL
-    public List<Publisher> getAllPublishers() {
+     public List<Publisher> getAllPublishers() {
         return publisherRepository.findAll();
     }
 
-    // READ BY ID
-    public Publisher getPublisherById(Long id) {
+     public Publisher getPublisherById(Long id) {
         return publisherRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Publisher not found"));
     }
 
-    // DELETE
-    public void deletePublisher(Long id) {
+     public void deletePublisher(Long id) {
         publisherRepository.deleteById(id);
     }
 }
