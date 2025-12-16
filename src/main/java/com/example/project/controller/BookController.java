@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.project.dto.CreateBookRequest;
 import com.example.project.model.Book;
 import com.example.project.service.BookService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/books")
@@ -22,22 +25,22 @@ public class BookController {
 
     private final BookService bookService;
 
-     public BookController(BookService bookService) {
+    public BookController(BookService bookService) {
         this.bookService = bookService;
     }
 
-     @PostMapping("/saveBook")
-    public void addBook(@RequestBody Book book) {
-        bookService.saveBook(book);
+    @PostMapping("/saveBook")
+    public void addBook(@Valid @RequestBody CreateBookRequest request) {
+        bookService.saveBook(request);
     }
 
-@GetMapping("/all")
-public List<Book> getAllBooks() {
-    return bookService.getAllBooks();
-}
+    @GetMapping("/all")
+    public List<Book> getAllBooks() {
+        return bookService.getAllBooks();
+    }
 
     @GetMapping("/inventory")
-    public int getAllBooks(@RequestParam String category) {
+    public int inventory(@RequestParam String category) {
         return bookService.inventory(category);
     }
 
@@ -52,17 +55,17 @@ public List<Book> getAllBooks() {
     }
 
     @GetMapping("/price/{min}/{max}")
-    public List<Book> getBooksByPriceRange(@PathVariable double min, @PathVariable double max) {
+    public List<Book> byPrice(@PathVariable double min, @PathVariable double max) {
         return bookService.getBooksByPriceRange(min, max);
     }
 
     @GetMapping("/total")
-    public int getTotalBooks() {
+    public int total() {
         return bookService.getTotalBooks();
     }
 
     @GetMapping("/authors")
-    public Set<String> getUniqueAuthors() {
+    public Set<String> authors() {
         return bookService.getUniqueAuthors();
     }
 }

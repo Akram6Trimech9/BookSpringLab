@@ -1,61 +1,52 @@
 package com.example.project.model;
 
-import com.example.project.validation.ValidISBN;
+import java.util.HashSet;
+import java.util.Set;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Version;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 
 @Entity
-@Table(name = "books")
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Title cannot be blank")
-    @Column(nullable = false)
     private String title;
-
-    @NotBlank(message = "Author cannot be blank")
-    @Column(nullable = false)
-    private String author;
-
-    @NotBlank(message = "ISBN cannot be blank")
-    @ValidISBN
-    @Column(nullable = false, unique = true)
     private String isbn;
-
-    @Min(value = 0, message = "Price must be greater than or equal to 0")
-    @Column(nullable = false)
     private double price;
-
-    @Min(value = 0, message = "Quantity cannot be negative")
-    @Column(nullable = false)
     private int quantity;
-
     private String category;
 
-    @Version
-    private Integer version;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
 
-    public Book() {}
+    @ManyToOne
+    @JoinColumn(name = "publisher_id")
+    private Publisher publisher;
 
+    @ManyToMany
+    @JoinTable(
+        name = "book_tag",
+        joinColumns = @JoinColumn(name = "book_id"),
+        inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private Set<Tag> tags = new HashSet<>();
+
+    // Getters & Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
-
-    public String getAuthor() { return author; }
-    public void setAuthor(String author) { this.author = author; }
 
     public String getIsbn() { return isbn; }
     public void setIsbn(String isbn) { this.isbn = isbn; }
@@ -68,4 +59,13 @@ public class Book {
 
     public String getCategory() { return category; }
     public void setCategory(String category) { this.category = category; }
+
+    public Author getAuthor() { return author; }
+    public void setAuthor(Author author) { this.author = author; }
+
+    public Publisher getPublisher() { return publisher; }
+    public void setPublisher(Publisher publisher) { this.publisher = publisher; }
+
+    public Set<Tag> getTags() { return tags; }
+    public void setTags(Set<Tag> tags) { this.tags = tags; }
 }

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Management Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Book Management Dashboard</h1>
+    </header>
+
+    <nav>
+        <button onclick="showSection('authors')">Authors</button>
+        <button onclick="showSection('publishers')">Publishers</button>
+        <button onclick="showSection('tags')">Tags</button>
+        <button onclick="showSection('books')">Books</button>
+    </nav>
+
+    <main>
+        <!-- Authors Section -->
+        <section id="authors" class="hidden">
+            <h2>Authors</h2>
+            <form id="authorForm">
+                <input type="text" placeholder="Name" id="authorName" required>
+                <input type="email" placeholder="Email" id="authorEmail" required>
+                <button type="submit">Add Author</button>
+            </form>
+            <ul id="authorList"></ul>
+        </section>
+
+        <!-- Publishers Section -->
+        <section id="publishers" class="hidden">
+            <h2>Publishers</h2>
+            <form id="publisherForm">
+                <input type="text" placeholder="Name" id="address" required>
+                <input type="text" placeholder="Address" id="address" required>
+                <button type="submit">Add Publisher</button>
+            </form>
+            <ul id="publisherList"></ul>
+        </section>
+
+        <!-- Tags Section -->
+        <section id="tags" class="hidden">
+            <h2>Tags</h2>
+            <form id="tagForm">
+                <input type="text" placeholder="Tag Name" id="tagName" required>
+                <button type="submit">Add Tag</button>
+            </form>
+            <ul id="tagList"></ul>
+        </section>
+
+        <!-- Books Section -->
+        <section id="books" class="hidden">
+            <h2>Books</h2>
+            <form id="bookForm">
+                <input type="text" placeholder="Title" id="bookTitle" required>
+                <input type="text" placeholder="Category" id="bookCategory">
+                <input type="text" placeholder="ISBN" id="bookIsbn" required>
+                <input type="number" placeholder="Price" id="bookPrice" min="0" required>
+                <input type="number" placeholder="Quantity" id="bookQuantity" min="0" required>
+                <input type="number" placeholder="Author ID" id="bookAuthorId" required>
+                <input type="number" placeholder="Publisher ID" id="bookPublisherId">
+                <input type="text" placeholder="Tag IDs (comma separated)" id="bookTagIds">
+                <button type="submit">Add Book</button>
+            </form>
+            <ul id="bookList"></ul>
+        </section>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
